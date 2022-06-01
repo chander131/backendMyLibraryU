@@ -1,0 +1,21 @@
+const LIBRARIAN_ROLE = 'LIBRARIAN_ROLE';
+const STUDENT_ROLE = 'STUDENT_ROLE';
+
+const USERS = 'users';
+
+const ALLOWEDCOLLECTIONS = [
+    USERS,
+];
+
+const ALLOWEDROLES = [
+    LIBRARIAN_ROLE,
+    STUDENT_ROLE,
+];
+
+module.exports = {
+    LIBRARIAN_ROLE,
+    STUDENT_ROLE,
+    ALLOWEDROLES,
+    USERS,
+    ALLOWEDCOLLECTIONS,
+};
