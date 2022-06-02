@@ -7,6 +7,6 @@ module.exports = {
 	apiVersion: 'v1',
 	ipServer: 'https://danielelias-my-u-library.herokuapp.com',
 	uriDb: 'mongodb+srv://chander131:eBJUy47Wwa7BtF3@cluster0.8ihzxhe.mongodb.net/libraryUniversity?retryWrites=true&w=majority',
-	port: 5001,
-	environment: 'production',
+	port: process.env.PORT || 5001,
+	environment: process.env.NODE_ENV,
 };
