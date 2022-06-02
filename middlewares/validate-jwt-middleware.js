@@ -11,7 +11,7 @@ const validateJWT = async (req = request, res = response, next) => {
     try {
         token = token.replace(/['"]+/g, "");
         
-        let payload = jwt.decode(token, process.env.SECRET_KEY);
+        let payload = jwt.decode(token, 'bknJA8yUnn39kalxMZa90Hsu1mznXCNns793');
 
         if (payload.exp <= moment().unix()) return res.status(404).send({ ReturnCode: 401, ReturnMsg: 'El token a expirado.' });
         

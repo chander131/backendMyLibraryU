@@ -1,7 +1,8 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
 
-const SECRET_KEY = process.env.SECRET_KEY;
+// const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = 'bknJA8yUnn39kalxMZa90Hsu1mznXCNns793';
 
 exports.createAccessToken = function(user) {
     const payload = {
