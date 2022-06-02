@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require("path");
 
 const AppConfig = require('../config/AppConfig');
 const MongoConnection = require('../db/dbConnection');
@@ -43,11 +44,12 @@ class Server {
 	middlewares() {
 		// CORS
 		this.app.use(cors());
-		this.app.use(bodyParser.json({ limit: '200mb' }));
-		this.app.use(bodyParser.urlencoded({ limit: '200mb', extended: false, parameterLimit: 1000000 }));
-
 		// Lectura y parseo del body
 		this.app.use(express.json());
+		this.app.use(express.static('public'));
+		this.app.use(bodyParser.urlencoded({ limit: '200mb', extended: false, parameterLimit: 1000000 }));
+		this.app.use(bodyParser.json({ limit: '200mb' }));
+
 
 		// Configuración Header HTTP
 		this.app.use((req, res, next) => {
@@ -60,9 +62,6 @@ class Server {
 			res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
 			next();
 		});
-
-		// Directorio publico
-		this.app.use(express.static('public'));
 	}
 
 	routes() {
@@ -72,6 +71,12 @@ class Server {
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.genderBook}`, GenderBookRoutes);
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.book}`, BookRoutes);
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.bookHistory}`, BookHistoryRoutes);
+
+		//Static files
+		app.use(express.static(path.join(__dirname, "public")));
+		app.get("*", (req, res) => {
+			res.sendFile(path.join(__dirname + "/public/index.html"));
+		});
 	}
 
 	listen() {
