@@ -77,13 +77,23 @@ function setPackage(d, p) {
   fs.writeFileSync(path.resolve(d, "package.json"), JSON.stringify(lPackage));
 }
 function setSubDirectorios(d) {
-  fs.mkdirSync(path.resolve(d, "constants"));
+  fs.mkdirSync(path.resolve(d, "config"));
   fs.mkdirSync(path.resolve(d, "controllers"));
   fs.mkdirSync(path.resolve(d, "db"));
+  fs.mkdirSync(path.resolve(d, "helpers"));
   fs.mkdirSync(path.resolve(d, "middlewares"));
   fs.mkdirSync(path.resolve(d, "models"));
+  fs.mkdirSync(path.resolve(d, "public"));
   fs.mkdirSync(path.resolve(d, "routes"));
-  fs.mkdirSync(path.resolve(d, "utils"));
+  fs.mkdirSync(path.resolve(d, "services"));
+  
+  // fs.mkdirSync(path.resolve(d, "constants"));
+  // fs.mkdirSync(path.resolve(d, "controllers"));
+  // fs.mkdirSync(path.resolve(d, "db"));
+  // fs.mkdirSync(path.resolve(d, "middlewares"));
+  // fs.mkdirSync(path.resolve(d, "models"));
+  // fs.mkdirSync(path.resolve(d, "routes"));
+  // fs.mkdirSync(path.resolve(d, "utils"));
 }
 async function setCopiar() {
   if (SO === "win32") {

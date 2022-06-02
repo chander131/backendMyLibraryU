@@ -11,7 +11,13 @@ const getAll = async (req = request, res = response) => {
   const response = new StandarResponse({});
 
   try {
-    const bookHistory = await BookHistory.find().populate(['user', 'book']);
+    const { status, userId } = req.query;
+    let filter = {};
+
+    if (status) filter = { ...filter, status };
+    if (userId) filter = { ...filter, user: ObjectId(userId) };
+
+    const bookHistory = await BookHistory.find(filter).populate({ path: 'user', select: 'name' }).populate('book');
 
     response.ReturnData = bookHistory;
   } catch (e) {
@@ -28,7 +34,7 @@ const getByUser = async (req = request, res = response) => {
 
   try {
     const { id } = req.params;
-    const booksHistory = await BookHistory.find({ user: id }).populate(['user', 'book']);
+    const booksHistory = await BookHistory.find({ user: id }).populate({ path: 'user', select: 'name' }).populate('book');
 
     response.ReturnData = booksHistory;
   } catch (e) {

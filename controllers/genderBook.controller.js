@@ -22,8 +22,8 @@ const create = async (req = request, res = response) => {
   const response = new StandarResponse({});
 
   try {
-    const { gender } = req.body;
-    const genderBook = new GenderBook({ gender });
+    const { gender, color } = req.body;
+    const genderBook = new GenderBook({ gender, color });
     await genderBook.save()
 
     response.ReturnData = genderBook;
@@ -36,7 +36,27 @@ const create = async (req = request, res = response) => {
   return res.status(response.ReturnCode).json(response);
 };
 
+const update = async (req = request, res = response) => {
+  const response = new StandarResponse({});
+
+  try {
+    const { id } = req.params;
+    const { gender, color } = req.body;
+
+    const genderStorage = await GenderBook.findOneAndUpdate({ _id: id }, { gender, color }, { new: true });
+
+    response.ReturnData = genderStorage;
+  } catch (e) {
+    console.log("🚀 ~ file: genderBook.controller.js ~ line 50 ~ update ~ e", e);
+    response.ReturnCode = 500;
+    response.ReturnMsg = e.message;
+  }
+
+  return res.status(response.ReturnCode).json(response);
+};
+
 module.exports = {
   getAll,
   create,
+  update,
 };

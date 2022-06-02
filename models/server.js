@@ -67,8 +67,8 @@ class Server {
 
 	routes() {
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.auth}`, AuthRoutes);
-		this.app.use(require('../middlewares').validateJWT);
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.user}`, UserRoutes);
+		this.app.use(require('../middlewares').validateJWT);
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.genderBook}`, GenderBookRoutes);
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.book}`, BookRoutes);
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.bookHistory}`, BookHistoryRoutes);

@@ -7,7 +7,7 @@ Ejecutar en la raiz del proyecto:
 ### `yarn dev` o `npm run dev`
 
 Para correr la app en modo de desarrollo.\
-Abrir [http://localhost:8080/](http://localhost:8080/) para ver en el navegador.
+Abrir [http://localhost:5001/](http://localhost:5001/) para ver en el navegador.
 
 ### `yarn build` o `npm run build`
 

@@ -1,4 +1,8 @@
 const path = require('path');
+const moment = require('moment');
+require('moment/locale/es');
+
+moment.locale('es');
 
 let nodeEv = process.env.NODE_ENV || "";
 

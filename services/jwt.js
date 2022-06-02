@@ -6,6 +6,7 @@ const SECRET_KEY = process.env.SECRET_KEY;
 exports.createAccessToken = function(user) {
     const payload = {
         uid: user._id,
+        role: user.role,
         createToken: moment().unix(),
         exp: moment().add(3, 'hours').unix(),
     };

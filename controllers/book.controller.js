@@ -104,12 +104,8 @@ const search = async (req = request, res = response) => {
     if (title) filter = { ...filter, title: new RegExp(`.*${title}.*`, 'i') };
     if (author) filter = { ...filter, author: new RegExp(`.*${author}.*`, 'i') };
     if (gender) filter = { ...filter, gender: new RegExp(`.*${gender}.*`, 'i') };
-
-    console.log('Filtro',filter);
     
     const books = await Book.find(filter);
-    
-    console.log('books', books);
 
     response.ReturnData = books;
   } catch (e) {

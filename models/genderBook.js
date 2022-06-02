@@ -9,6 +9,10 @@ const GenderBookSchema = new Schema({
     type: String,
     required: [true, 'Gender is required']
   },
+  color: {
+    type: String,
+    required: [true, 'Color is required']
+  },
 });
 
 GenderBookSchema.methods.toJSON = function () {
