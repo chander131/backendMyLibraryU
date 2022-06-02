@@ -7,7 +7,7 @@
 		"test": "mocha --no-timeout --exit",
 		"start": "node app.js",
 		"dev": "SET NODE_ENV=development&& nodemon app.js",
-		"build": "node build.js"
+		"pro-build": "node build.js"
 	},
 	"keywords": [],
 	"author": "Daniel Elías",
