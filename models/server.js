@@ -73,8 +73,8 @@ class Server {
 		this.app.use(`${this.apiPaths.base}/${AppConfig.apiVersion}${this.apiPaths.bookHistory}`, BookHistoryRoutes);
 
 		//Static files
-		app.use(express.static(path.join(__dirname, "public")));
-		app.get("*", (req, res) => {
+		this.app.use(express.static(path.join(__dirname, "public")));
+		this.app.get("*", (req, res) => {
 			res.sendFile(path.join(__dirname + "/public/index.html"));
 		});
 	}
