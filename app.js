@@ -4,7 +4,8 @@ require('moment/locale/es');
 
 moment.locale('es');
 
-let nodeEv = process.env.NODE_ENV || "";
+// let nodeEv = process.env.NODE_ENV || "";
+let nodeEv = "";
 
 if (nodeEv) {
   nodeEv = nodeEv.trim().toLocaleLowerCase();
